@@ -64,10 +64,50 @@ sub display_captcha {
     my $captcha_img = "captcha_image.php?code=$captcha_code";
 
     my $captcha_html = <<"HTML";
-    <html>
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CAPTCHA Page</title>
-        <!-- Tambahkan CSS atau script CAPTCHA jika diperlukan -->
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                text-align: center;
+                margin: 50px;
+            }
+            h1 {
+                color: #333;
+            }
+            p {
+                color: #555;
+                margin-bottom: 20px;
+            }
+            img {
+                margin-top: 20px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            }
+            form {
+                margin-top: 20px;
+            }
+            label {
+                display: block;
+                margin-bottom: 10px;
+                color: #333;
+            }
+            input {
+                padding: 8px;
+                font-size: 16px;
+            }
+            input[type="submit"] {
+                background-color: #4caf50;
+                color: white;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
         <h1>Your IP has been blocked</h1>
@@ -75,7 +115,8 @@ sub display_captcha {
         <img src="$captcha_img" alt="CAPTCHA Image">
         <form action="verify_captcha.php" method="post">
             <label for="captcha_input">Enter CAPTCHA:</label>
-            <input type="text" id="captcha_input" name="captcha_input">
+            <input type="text" id="captcha_input" name="captcha_input" required>
+            <br>
             <input type="submit" value="Submit">
         </form>
     </body>
